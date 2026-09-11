@@ -1894,5 +1894,18 @@ if('serviceWorker' in navigator){
   });
 }
 </script>
+  <script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js", { scope: "./" })
+      .then((registration) => {
+        console.log("Fruit Fusion service worker registered:", registration.scope);
+      })
+      .catch((error) => {
+        console.error("Fruit Fusion service worker registration failed:", error);
+      });
+  });
+}
+</script>
 </body>
 </html>
