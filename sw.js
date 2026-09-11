@@ -1,60 +1,16 @@
-// Fruit Fusion — PWA service worker
-// Increment the version when the app shell changes.
-const CACHE_NAME = "fruit-fusion-cache-v2";
-
-const APP_SHELL = [
-  "./",
-  "./index.html",
-  "./manifest.json",
-  "./icons/launchericon-192x192.png",
-  "./icons/launchericon-512x512.png",
-  "./icons/launchericon-192x192-maskable.png",
-  "./icons/launchericon-512x512-maskable.png"
+const CACHE='fruit-fusion-exact-v1';
+const ASSETS=[
+ './','./index.html','./manifest.json',
+ './splash-art.jpg','./home-art.jpg','./levels-art.jpg','./game-art.jpg',
+ './boss-art.jpg','./shop-art.jpg','./awards-art.jpg','./settings-art.jpg',
+ './howto-art.jpg','./complete-art.jpg','./fusion-art.jpg','./outmoves-art.jpg',
+ './icons/launchericon-192x192.png','./icons/launchericon-512x512.png'
 ];
-
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(APP_SHELL))
-      .then(() => self.skipWaiting())
-  );
-});
-
-self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys()
-      .then((keys) =>
-        Promise.all(
-          keys
-            .filter((key) => key !== CACHE_NAME)
-            .map((key) => caches.delete(key))
-        )
-      )
-      .then(() => self.clients.claim())
-  );
-});
-
-self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "GET") return;
-
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
-
-      return fetch(event.request)
-        .then((response) => {
-          if (
-            response &&
-            (response.status === 200 || response.type === "opaque")
-          ) {
-            const clone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, clone);
-            });
-          }
-          return response;
-        })
-        .catch(() => caches.match("./index.html"));
-    })
-  );
+self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
+self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));
+self.addEventListener('fetch',e=>{
+  if(e.request.method!=='GET') return;
+  e.respondWith(caches.match(e.request).then(cached=>cached || fetch(e.request).then(r=>{
+    const copy=r.clone(); caches.open(CACHE).then(c=>c.put(e.request,copy)); return r;
+  }).catch(()=>caches.match('./index.html'))));
 });
