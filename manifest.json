@@ -1,50 +1,46 @@
 {
-  "id": "/fruit-fusion",
+  "id": "./",
   "name": "Fruit Fusion — Match 3",
   "short_name": "Fruit Fusion",
   "description": "Fruit Fusion is a colorful match-3 puzzle game featuring fruit matching, fusion gems, special fruits, boss battles, and 100 exciting levels.",
   "lang": "en",
   "dir": "ltr",
-
-  "start_url": "/",
-  "scope": "/",
-
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-
-  "orientation": "portrait",
-
+  "display_override": [
+    "standalone"
+  ],
+  "orientation": "portrait-primary",
   "background_color": "#eef1f7",
   "theme_color": "#7c5cfc",
-
   "categories": [
     "games",
     "puzzle",
     "entertainment"
   ],
-
   "prefer_related_applications": false,
-
   "icons": [
     {
-      "src": "/icons/launchericon-192x192.png",
+      "src": "./icons/launchericon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icons/launchericon-512x512.png",
+      "src": "./icons/launchericon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icons/launchericon-192x192-maskable.png",
+      "src": "./icons/launchericon-192x192-maskable.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/icons/launchericon-512x512-maskable.png",
+      "src": "./icons/launchericon-512x512-maskable.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
