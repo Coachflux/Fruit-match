@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Fruit Fusion \u2014 Match 3",
+  "name": "Fruit Fusion \u2014 Match 3 Adventure",
   "short_name": "Fruit Fusion",
-  "description": "Fruit Fusion is a colorful match-3 adventure with fruit fusion, boosters, boss battles and 100 levels.",
+  "description": "A polished fruit-fusion match-3 adventure with special fruits, combos, boss battles and a growing world.",
   "lang": "en",
   "dir": "ltr",
   "start_url": "./",
@@ -10,11 +10,12 @@
   "display": "fullscreen",
   "display_override": [
     "fullscreen",
-    "standalone"
+    "standalone",
+    "minimal-ui"
   ],
   "orientation": "portrait-primary",
-  "background_color": "#071a45",
-  "theme_color": "#2367ff",
+  "background_color": "#06152f",
+  "theme_color": "#176cff",
   "categories": [
     "games",
     "puzzle",
@@ -23,16 +24,10 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "./icons/launchericon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "./icons/launchericon-512x512.png",
+      "src": "./assets/appicon.svg",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ]
 }
